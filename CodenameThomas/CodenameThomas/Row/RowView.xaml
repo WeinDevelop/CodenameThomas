@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:field="clr-namespace:CodenameThomas.Field"
+             x:Class="CodenameThomas.Row.RowView">
+  <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <field:FieldView BindingContext="{Binding Field0}"
+                             Grid.Column="0"/>
+            <field:FieldView BindingContext="{Binding Field1}"
+                             Grid.Column="1"/>
+            <field:FieldView BindingContext="{Binding Field2}"
+                             Grid.Column="2"/>
+            <field:FieldView BindingContext="{Binding Field3}"
+                             Grid.Column="3"/>
+            <field:FieldView BindingContext="{Binding Field4}"
+                             Grid.Column="4"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

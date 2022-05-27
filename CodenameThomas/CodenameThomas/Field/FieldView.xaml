@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:CodenameThomas"
+             x:Class="CodenameThomas.Field.FieldView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <local:StateToColorConverter x:Key="StateToColorConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+  <ContentView.Content>
+      <StackLayout>
+            <Frame OutlineColor="Gray" 
+                   BackgroundColor="{Binding FieldState, Converter={StaticResource StateToColorConverter}}" 
+                   Grid.Row="0"
+                   Grid.Column="0">
+                <Label Text="{Binding UsedLetter}" 
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

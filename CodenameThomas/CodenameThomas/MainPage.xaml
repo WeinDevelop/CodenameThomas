@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CodenameThomas" xmlns:field="clr-namespace:CodenameThomas.Field" xmlns:row="clr-namespace:CodenameThomas.Row"
+             x:Class="CodenameThomas.MainPage"
+             BackgroundColor="Black">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StateToColorConverter x:Key="StateToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>            <!--first playfield-->
+            <RowDefinition Height="Auto"/>            <!--second playfield-->
+            <RowDefinition Height="Auto"/>            <!--third playfield-->
+            <RowDefinition Height="Auto"/>            <!--fourth playfield-->
+            <RowDefinition Height="Auto"/>            <!--fith playfield-->
+            <RowDefinition Height="Auto"/>            <!--sixth playfield-->
+            <RowDefinition Height="*"/>            <!--free space between keyboard and playfield-->
+            <RowDefinition Height="Auto"/>            <!--Keyboard-->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--first row-->
+        <row:RowView BindingContext="{Binding Row0}"
+                         Grid.Row="0"/>
+
+        <!--second row-->
+        <row:RowView BindingContext="{Binding Row1}"
+                         Grid.Row="1"/>
+
+        <!--third row-->
+        <row:RowView BindingContext="{Binding Row2}"
+                         Grid.Row="2"/>
+
+        <!--fourth row-->
+        <row:RowView BindingContext="{Binding Row3}"
+                         Grid.Row="3"/>
+
+        <!--fith row-->
+        <row:RowView BindingContext="{Binding Row4}"
+                         Grid.Row="4"/>
+
+        <!--sixth row-->
+        <row:RowView BindingContext="{Binding Row5}"
+                         Grid.Row="5"/>
+
+        <!--Free Space Between Playfield & Keyboard: Grid.Row = 6-->
+
+        <Grid Grid.Row="6" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                        Text="Enter"
+                        Command="{Binding CheckWordCommand}"
+                        TextColor="Wheat"
+                        BackgroundColor="Transparent"/>
+
+            <!--TODO Incase the screen is to small, show a smaller keyboard UI with three main buttons;  check word, add letter and delete letter, add letter opens a popup with the complete keyboard-->
+
+            <!--TODO Replace Text with an icon (plus)-->
+            <!--
+                <Frame BackgroundColor="Transparent"
+                           Grid.Column="1"
+                           BorderColor="Wheat">
+                    <Button Text="Add Letter"
+                                Command="{Binding CheckWordCommand}"
+                                TextColor="Red"
+                                BorderColor="Gray"
+                                BackgroundColor="Transparent"/>
+                </Frame>-->
+
+            <Button Grid.Column="1"
+                    Text="{Binding ResultMessage}"
+                    TextColor="Red"
+                    BackgroundColor="Transparent"
+                    Command="{Binding ClearResultMessageCommand}"/>
+            <Button Grid.Column="2"
+                    Text="DEL"
+                    Command="{Binding RemoveLetterCommand}"
+                    TextColor="Wheat"
+                    BackgroundColor="Transparent"/>
+        </Grid>
+
+        <!--Keyboard-->
+        <Grid Grid.Row="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>                <!--First row of keyboard-->
+                <RowDefinition Height="*"/>                <!--second row of keyboard-->
+                <RowDefinition Height="*"/>                <!--third row of keyboard with enter and delete-->
+            </Grid.RowDefinitions>
+
+            <Grid.Resources >
+                <Style TargetType="Button" >
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="CharacterSpacing" Value="0" />
+                    <Setter Property="BackgroundColor" Value="Transparent" />
+                    <Setter Property="TextColor" Value="White" /> <!--TODO change the color based on the status-->
+                </Style>
+            </Grid.Resources>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                            Text="Q"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="Q"
+                            
+                            BackgroundColor="Transparent"/>
+                <Button Grid.Column="1"
+                            Text="W"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="W"/>
+
+                <Button Grid.Column="2"
+                            Text="E"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="E"/>
+
+                <Button Grid.Column="3"
+                            Text="R"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="R"/>
+
+                <Button Grid.Column="4"
+                            Text="T"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="T"/>
+
+                <Button Grid.Column="5"
+                            Text="Z"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="Z"/>
+
+                <Button Grid.Column="6"
+                            Text="U"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="U"/>
+
+                <Button Grid.Column="7"
+                            Text="I"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="I"/>
+
+                <Button Grid.Column="8"
+                            Text="O"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="O"/>
+
+                <Button Grid.Column="9"
+                            Text="P"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="P"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                            Text="A"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="A"/>
+
+                <Button Grid.Column="1"
+                            Text="S"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="S"/>
+
+                <Button Grid.Column="2"
+                            Text="D"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="D"/>
+
+                <Button Grid.Column="3"
+                            Text="F"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="F"/>
+
+                <Button Grid.Column="4"
+                            Text="G"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="G"/>
+
+                <Button Grid.Column="5"
+                            Text="H"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="H"/>
+
+                <Button Grid.Column="6"
+                            Text="J"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="J"/>
+
+                <Button Grid.Column="7"
+                            Text="K"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="K"/>
+
+                <Button Grid.Column="8"
+                            Text="L"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="L"/>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                            Text="Y"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="Y"/>
+
+                <Button Grid.Column="1"
+                            Text="X"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="X"/>
+
+                <Button Grid.Column="2"
+                            Text="C"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="C"/>
+
+                <Button Grid.Column="3"
+                            Text="V"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="V"/>
+
+                <Button Grid.Column="4"
+                            Text="B"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="B"/>
+
+                <Button Grid.Column="5"
+                            Text="N"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="N"/>
+
+                <Button Grid.Column="6"
+                            Text="M"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="M"/>
+
+                <Button Grid.Column="7"
+                            Text="Ä"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="Ä"/>
+
+                <Button Grid.Column="8"
+                            Text="Ö"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="Ö"/>
+
+                <Button Grid.Column="9"
+                            Text="Ü"
+                            Command="{Binding AddLetterCommand}"
+                            CommandParameter="Ü"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
